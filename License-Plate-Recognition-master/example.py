@@ -18,6 +18,7 @@ def send_license_number_plate_checkin(license_number):
     connection = requests.post(url = LINK, data= params)
     print(connection.json())
 
+
 def send_license_number_plate_checkout(license_number):
     LINK = 'http://127.0.0.1:8000/validate-license/check/out'
     params = json.dumps(license(license_number).__dict__)
@@ -35,6 +36,7 @@ while(i < 29):
         img = cv2.imread(path)
         plate = model.predict(img)
         plate = plate.replace("-","")
+        print(plate)
         time_send = datetime.now()
         if plate == None:
             print(str(time_send) + " --> NO CAR")
